@@ -53,7 +53,7 @@ public class ContactManagerApplication {
     }
 
     //remove contact
-    public static void removeContact
+//    public static void removeContact
 
     // Search contacts method
     public static void searchContact(String name) {
