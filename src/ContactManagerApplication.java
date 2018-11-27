@@ -12,14 +12,16 @@ import java.util.List;
 public class ContactManagerApplication {
 
     public static void main( String[] args ) {
-//        contactAdd(Collections.singletonList("benny: 9999999"));
 
-//        searchContact("mmmmmm");
-//        contactDisplay();
-//        removeContact("kJ");
         ContactLogic.askUser();
 
     } // end of min method
+
+
+
+
+
+
 
     // Create contact list
     public static List<String> contactList() {
@@ -62,9 +64,6 @@ public class ContactManagerApplication {
 
               if (contact.toLowerCase().contains(name.toLowerCase())) {
                     contacts.remove(contact);
-              }else if (!contact.contains(name) && contacts.get(contacts.size() -1).equals(name)){
-                  System.out.println("nnnnnn");
-                  break;
               }
             }
                     try {
@@ -84,9 +83,6 @@ public class ContactManagerApplication {
         for(String contact : contacts) {
             if (contact.toLowerCase().contains(name.toLowerCase())) {
                 System.out.println(contact);
-            } else {
-                System.out.println("---------\nsorry this contact doesn't exist\n----------");
-                break;
             }
         }
     } // end of searchContact method
