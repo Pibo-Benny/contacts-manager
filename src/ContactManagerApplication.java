@@ -8,15 +8,20 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
 public class ContactManagerApplication {
 
     public static void main( String[] args ) {
 //        contactAdd(Collections.singletonList("benny: 9999999"));
 
-        searchContact("mmmmmm");
+//        searchContact("mmmmmm");
 //        contactDisplay();
+        removeContact("kJ");
 
     }
+
+
+
 
     public static List<String> contactList() {
         Path contactFile = Paths.get("contacts.txt");
@@ -26,10 +31,7 @@ public class ContactManagerApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println(contacts);
-//        for(String contact : contacts ){
-//            System.out.println(contact);
-//        }
+
         return contacts;
     }
 
@@ -53,7 +55,28 @@ public class ContactManagerApplication {
     }
 
     //remove contact
-//    public static void removeContact
+    public static void removeContact(String name){
+        Path contactFile = Paths.get("contacts.txt");
+        List<String> contacts = new ArrayList<>(contactList());
+                    try {
+            for (String contact : contacts) {
+                        if (!contact.toLowerCase().contains(name.toLowerCase())){
+                            System.out.println("----------\nsorry we can't find this contact\n----------");
+                            break;
+                        }
+                        if (contact.toLowerCase().contains(name.toLowerCase())) {
+                            contacts.remove(contact);
+                        }
+                        Files.write(contactFile , contacts);
+            }
+            contactDisplay();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+    }
 
     // Search contacts method
     public static void searchContact(String name) {
@@ -63,22 +86,15 @@ public class ContactManagerApplication {
             if (contact.toLowerCase().contains(name.toLowerCase())) {
                 System.out.println(contact);
             } else {
-                System.out.println("Sorry this contact doesn't exist.");
+                System.out.println("---------\nsorry this contact doesn't exist\n----------");
                 break;
             }
         }
 
     }
 
+
 }
 
-//    try {
-//            Files.write(carMakers, makers, StandardOpenOption.APPEND);
-//            } catch (IOException e) {
-//            e.printStackTrace();
-//            }
 
-//public static void mainMenu(){
-//    System.out.println("Welcome tot he contacts manager");
-//}
 
